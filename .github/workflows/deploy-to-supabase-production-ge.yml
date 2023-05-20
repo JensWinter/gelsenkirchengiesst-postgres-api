@@ -1,21 +1,21 @@
-name: Deploy Migrations to Staging
+name: Deploy Migrations to Production (Gelsenkirchen)
 
 on:
   push:
     branches:
-      - staging
+      - master-gelsenkirchen
   workflow_dispatch:
 
 jobs:
   deploy:
-    environment: staging-berlin
+    environment: production
     runs-on: ubuntu-22.04
     if: "!contains(github.event.head_commit.message, 'skip ci')"
 
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       SUPABASE_DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      STAGING_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+      PRODUCTION_PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     steps:
       - uses: actions/checkout@v3
@@ -25,5 +25,5 @@ jobs:
           version: 1.36.6
 
       - run: |
-          supabase link --project-ref $STAGING_PROJECT_ID
+          supabase link --project-ref $PRODUCTION_PROJECT_ID
           supabase db push

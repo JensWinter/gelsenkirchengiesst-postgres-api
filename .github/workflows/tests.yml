@@ -8,9 +8,9 @@ env:
   NODE_ENV: "test"
 on:
   push:
-    branches: [master, dev, staging]
+    branches: [master, dev, staging, master-gelsenkirchen]
   pull_request:
-    branches: [master, dev, staging]
+    branches: [master, dev, staging, master-gelsenkirchen]
 
 jobs:
   test:
