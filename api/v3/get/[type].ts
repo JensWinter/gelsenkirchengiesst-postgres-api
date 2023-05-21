@@ -48,7 +48,6 @@ export default async function handler(
 	);
 	const [paramsAreValid, validationError] = validate(params, getSchemas[type]);
 	if (!paramsAreValid) {
-		console.error(validationError);
 		return response
 			.status(400)
 			.json({ error: `invalid params: ${JSON.stringify(validationError)}` });
