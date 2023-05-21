@@ -46,14 +46,12 @@ export default async function handler(
 			.replace(`/v3/?type=${type}`, "")
 			.replace(`/?type=${type}`, "")
 	);
-/*
 	const [paramsAreValid, validationError] = validate(params, getSchemas[type]);
 	if (!paramsAreValid) {
 		return response
 			.status(400)
 			.json({ error: `invalid params: ${JSON.stringify(validationError)}` });
 	}
-*/
 
 	switch (type) {
 		default: {
